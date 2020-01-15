@@ -4,19 +4,19 @@ namespace AiSD_Sorting
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            int[] test_table = new int[10];
+            int[] testTable = new int[10];
             Random rand = new Random();
             for (int i = 0; i < 10; i++)
             {
-                test_table[i] = rand.Next(0, 101);
+                testTable[i] = rand.Next(0, 101);
             }
-            show_table(test_table);
-            selection_sort(test_table);
+            ShowTable(testTable);
+            SelectionSort(testTable);
         }
 
-        static int[] bubble_sort(int[] table)
+        static int[] BubbleSort(int[] table)
         {
             int tmp;
             for(int i = 0; i < table.Length - 2; i++)
@@ -30,12 +30,12 @@ namespace AiSD_Sorting
                         table[j] = tmp;
                     }
                 }
-                //show_table(table);
+                //ShowTable(table);
             }
             return table;
         }
 
-        static int[] insert_sort(int[] table)
+        static int[] InsertSort(int[] table)
         {
             int tmp;
             for(int i = 1; i < table.Length; i++)
@@ -49,39 +49,39 @@ namespace AiSD_Sorting
                         table[j] = tmp;
                     }
                 }
-                //show_table(table);
+                //ShowTable(table);
             }
             return table;
         }
 
-        static int[] selection_sort(int[] table)
+        static int[] SelectionSort(int[] table)
         {
-            int tmp_index;
+            int tmpIndex;
             int tmp;
             for(int i = 0; i < table.Length - 1; i++)
             {
-                tmp_index = i;
+                tmpIndex = i;
                 tmp = table[i];
                 for (int j = i + 1; j < table.Length; j++)
                 {
                     if(table[j] < tmp)
                     {
-                        tmp_index = j;
+                        tmpIndex = j;
                         tmp = table[j];
                     }
                 }
-                if(tmp_index != i)
+                if(tmpIndex != i)
                 {
-                    table[tmp_index] = table[i];
+                    table[tmpIndex] = table[i];
                     table[i] = tmp;
                 }
-                show_table(table);
+                ShowTable(table);
             }
 
             return table;
         }
 
-        static void show_table(int[] table)
+        static void ShowTable(int[] table)
         {
             for (int i = 0; i < table.Length; i++)
                 Console.Write("{0} ", table[i]);
