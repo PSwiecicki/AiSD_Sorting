@@ -11,10 +11,9 @@ namespace AiSD_Sorting
             for (int i = 0; i < 10; i++)
             {
                 test_table[i] = rand.Next(0, 101);
-                Console.Write("{0} ", test_table[i]);
             }
-            Console.WriteLine();
-            bubble_sort(test_table);
+            show_table(test_table);
+            selection_sort(test_table);
         }
 
         static int[] bubble_sort(int[] table)
@@ -31,13 +30,62 @@ namespace AiSD_Sorting
                         table[j] = tmp;
                     }
                 }
-                /*
-                for(int j = 0; j <10; j++)
-                    Console.Write("{0} ", table[j]);
-                Console.WriteLine();
-                */
+                //show_table(table);
             }
             return table;
+        }
+
+        static int[] insert_sort(int[] table)
+        {
+            int tmp;
+            for(int i = 1; i < table.Length; i++)
+            {
+                for(int j = 0; j < i; j++)
+                {
+                    if(table[i] < table[j])
+                    {
+                        tmp = table[i];
+                        table[i] = table[j];
+                        table[j] = tmp;
+                    }
+                }
+                //show_table(table);
+            }
+            return table;
+        }
+
+        static int[] selection_sort(int[] table)
+        {
+            int tmp_index;
+            int tmp;
+            for(int i = 0; i < table.Length - 1; i++)
+            {
+                tmp_index = i;
+                tmp = table[i];
+                for (int j = i + 1; j < table.Length; j++)
+                {
+                    if(table[j] < tmp)
+                    {
+                        tmp_index = j;
+                        tmp = table[j];
+                    }
+                }
+                if(tmp_index != i)
+                {
+                    table[tmp_index] = table[i];
+                    table[i] = tmp;
+                }
+                show_table(table);
+            }
+
+            return table;
+        }
+
+        static void show_table(int[] table)
+        {
+            for (int i = 0; i < table.Length; i++)
+                Console.Write("{0} ", table[i]);
+            Console.WriteLine();
         }
     }
 }
